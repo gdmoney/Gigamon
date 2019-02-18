@@ -1,0 +1,53 @@
+Wynn:   GigaVUE420 - 172.16.31.32 - root/extr5400 - 115,200
+Encore: GigaVUE420 - 172.16.31.33 - root/extr5400 - 115,200
+
+NAP7-1:		   - x.x.x.x	  - xxxx/xxxx
+NAP7-2: 	   - x.x.x.x	  - xxxx/xxxx
+
+==============================================================================
+
+Network port = Input
+Tool port    = Output
+
+==============================================================================
+
+show system
+show connect
+show port-params
+show port-stats
+show port-utils
+
+config user georged extr5400 extr5400 level super
+config system name   sdg_gigamon_b030101i
+config system prompt sdg_gigamon_b030101i
+config system ipaddr 172.16.31.32 subnetmask 255.255.240.0 gateway 172.16.31.254
+
+config web_server admin 1
+config system hostkey rsa 2048
+config system ssh2 1
+
+config port-type 1 network
+config port-type 3 tool
+config port-alias x1 NetScout
+config connect 1 to 3
+
+config port-params 1 medium electrical/optical
+config system remote_timeout 900
+config save default.cfg
+
+delete connect x2 to 1
+
+reset port-stats all
+
+==============================================================================
+
+install gvcpre8400prep 10.191.80.40
+reboot
+install gvc8601 10.191.80.40
+show file
+config save FILENAME.cfg nb			(wait for broadcast message)
+reboot
+config save FILENAME.cfg nb
+
+install -gs gsc8601.tgz 2 10.191.80.40		(GigaSmart card software)
+install -web gvweb8601    10.191.80.40		(G-VUE software)
