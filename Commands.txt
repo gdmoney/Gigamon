@@ -1,11 +1,3 @@
-Wynn:   GigaVUE420 - 172.16.31.32 - root/extr5400 - 115,200
-Encore: GigaVUE420 - 172.16.31.33 - root/extr5400 - 115,200
-
-NAP7-1:		   - x.x.x.x	  - xxxx/xxxx
-NAP7-2: 	   - x.x.x.x	  - xxxx/xxxx
-
-==============================================================================
-
 Network port = Input
 Tool port    = Output
 
